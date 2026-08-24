@@ -1,0 +1,20 @@
+# Build artifacts
+build/
+bin/
+*.o
+*.a
+*.so
+*.dll
+*.exe
+
+# Debugging
+core
+core.*
+*.dSYM/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
