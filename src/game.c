@@ -74,7 +74,7 @@ static void game_play_tone(int freq_hz, int duration_ms)
 
     fclose(f);
 
-    sprintf(cmd, sizeof(cmd), "(aplay -q '%s' 2>/dev/null || paplay '%s' 2>/dev/null) &", tmpfile, tmpfile);
+    snprintf(cmd, sizeof(cmd), "(aplay -q '%s' 2>/dev/null || paplay '%s' 2>/dev/null) &", tmpfile, tmpfile);
     (void)system(cmd);
 }
 
@@ -101,3 +101,128 @@ typedef struct
     const char *title;
     const char *body;
 } Lesson;
+
+static const Lesson TUTORIAL_LESSONS[] = {
+    {"DNA Basics",
+     "DNA is a sequence of four bases:\n"
+     "  A (adenine)\n  T (thymine)\n  C (cytosine)\n  G (guanine)\n\n"
+     "The bases pair up: A with T, C with G.\n"
+     "This is called complementary pairing."},
+    {"Codons",
+     "Bases are read in groups of three called codons.\n"
+     "Each codon translates to an amino acid.\n\n"
+     "  ATG = MET (Start)\n  CCA = Pro\n  TTG = Leu\n\n"
+     "There are 64 possible codons and 20 amino acids."},
+    {"Transcription",
+     "DNA template strand is transcribed into mRNA.\n"
+     "The pairing rules are:\n"
+     "  A (adenine) pairs with U (uracil)\n"
+     "  T (thymine) pairs with A (adenine)\n"
+     "  C (cytosine) pairs with G (guanine)\n"
+     "  G (guanine) pairs with C (cytosine)\n"
+     "Example:\n"
+     "  DNA:  TAC GGC CAG ACT\n"
+     "  mRNA: AUG CCG GUC UGA"},
+    {"Translation",
+     "mRNA codons are translated into amino acids.\n"
+     "  AUG -> MET (Start)\n"
+     "  CCG -> PRO\n"
+     "  GUC -> VAL\n"
+     "  UGA -> STOP\n"
+     "The machine reads codons left to right.\n"
+     "STOP terminates the output."},
+    {"The Codon Circuit",
+     "The Codon Circuit is a deterministic machine.\n\n"
+     "You receive:\n"
+     "  1. A DNA template tape\n"
+     "  2. A target translation\n"
+     "  3. A limited instruction inventory\n\n"
+     "You modify the DNA using instructions.\n"
+     "The machine transcribes and translates.\n"
+     "Your goal: make the output match the target."},
+    {"DELETE",
+     "DEL(p) removes the base at position p.\n\n"
+     "Example:\n"
+     "  ATGCCA\n"
+     "  DEL(4)\n"
+     "  ATGCA\n\n"
+     "This shifts all bases after position p to the left.\n"
+     "It changes the reading frame for downstream codons."},
+    {"INSERT",
+     "INS(p, b) inserts base b before position p.\n\n"
+     "Example:\n"
+     "  ATGCA\n"
+     "  INS(4, G)\n"
+     "  ATGGCA\n\n"
+     "Valid bases: A, T, C, G\n"
+     "This shifts all bases from position p onward to the right."},
+    {"REVERSE",
+     "REV(p, l) reverses a segment of length l starting at p.\n\n"
+     "Example:\n"
+     "  ATCGA\n"
+     "  REV(2, 3)\n"
+     "  AGCTA\n\n"
+     "This is a string reversal, not a reverse complement.\n"
+     "It does not change the tape length."},
+     {"SWAP",
+     "SWP(p1, p2) exchanges the bases at two positions.\n\n"
+     "Example:\n"
+     "  ATCG\n"
+     "  SWP(2, 4)\n"
+     "  AGCT\n\n"
+     "The two positions must be different.\n"
+     "It does not change the tape length."},
+     {"How to Play",
+     "LEVEL MODE - Edit DNA to reach the target!\n"
+     "  1. Read the TARGET output.\n"
+     "  2. Read the DNA template.\n"
+     "  3. Check your INVENTORY.\n"
+     "  4. Enter instructions to edit the tape.\n"
+     "  5. Press RUN or STEP to execute.\n\n"
+     "KEYBOARD SHORTCUTS:\n"
+     "  [D] Delete   [I] Insert   [R] Reverse   [S] Swap\n"
+     "  [ENTER] RUN  [Space] STEP  [X] RESET\n"
+     "  [H] Hint     [ESC] Back    [Q] Quit"},
+     {"Reading Frames",
+     "The machine reads DNA in groups of 3 from the start.\n\n"
+     "  [1-3] [4-6] [7-9] [10-12] ...\n\n"
+     "Each group is one codon.\n"
+     "If the tape length is not a multiple of 3,\n"
+     "the machine reports FRAME ERROR.\n\n"
+     "Insertions and deletions shift the reading frame\n"
+     "for all downstream codons."},
+     {"No-Op Rule",
+     "Some instructions leave the tape unchanged.\n"
+     "These are called no-ops and are not allowed.\n\n"
+     "Examples:\n"
+     "  REV(p,1) - reversing a single character\n"
+     "  SWP(p,p) - swapping a position with itself\n"
+     "  SWP(p1,p2) when S[p1] = S[p2]\n\n"
+     "No-Ops do not consume inventory."}}
+
+#define TUTORIAL_COUNT (sizeof(TUTORIAL_LESSONS) / sizeof(TUTORIAL_LESSONS[0]))
+
+const char *game_get_tutorial_title(int page)
+{
+    if (page <0 || page >= (int)TUTORIAL_COUNT)
+        return NULL;
+    return TUTORIAL_LESSONS[page].title;
+}
+
+const char *game_get_tutorial_body(int page)
+{
+    if (page <0 || page >= (int)TUTORIAL_COUNT)
+        return NULL;
+    return TUTORIAL_LESSONS[page].body;
+}
+
+static const char *MAIN_MENU_LABELS[] = {
+    "Levels",
+    "Simulation",
+    "Learn",
+    "Help",
+};
+
+#define MAIN_MENU_COUNT (sizeof(MAIN_MENU_LABELS) / sizeof(MAIN_MENU_LABELS[0]))
+
+int game_main_menu_count(void) { return (int)MAIN_MENU_COUNT; }
