@@ -97,6 +97,9 @@ typedef struct
     ExecutionResult exec_result;
     int current_codon;
 
+    int hints_used;
+    int hint_level;
+
     time_t challenge_start;
 
     int tutorial_page;
