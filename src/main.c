@@ -42,7 +42,7 @@ static void dev_mode(void)
         
         if (ok)
         {
-            // Generate through the runtime loader
+            /* Generate through the runtime loader */
             ch = challenge_generate(0, i);
             if (!ch)
             {
@@ -51,14 +51,14 @@ static void dev_mode(void)
             }
             else
             {
-                // Check initial matches level data
+                /* Check initial matches level data */
                 if (def->initial_dna && strcmp(ch->initial_tape->data, def->initial_dna) != 0)
                 {
                     sprintf(fail_msg, "Initial tape mismatch: runtime=%s, canonical=%s", ch->initial_tape->data, def->initial_dna);
                     ok = 0;
                 }
 
-                // Check target protein
+                /* Check target protein */
                 if (ok)
                 {
                     printf("Protein: ");
@@ -66,7 +66,7 @@ static void dev_mode(void)
                         printf("%s%s", j > 0 ? "->" : "", ch->target[j]);}
                     printf("\n");
                     
-                    // Verify target starts with MET, ends with STOP codon
+                    /* Verify target starts with MET, ends with STOP codon */
                     if (strcmp(ch->target[0], "MET") != 0)
                     {
                         sprintf(fail_msg, "Target does not start with MET");
@@ -79,7 +79,7 @@ static void dev_mode(void)
                     }
                 }
                 
-                // Check initial is not already solved
+                /* Check initial is not already solved */
                 if (ok)
                 {
                     ExecutionResult init_er = challenge_execute(ch, ch->initial_tape);
@@ -90,7 +90,7 @@ static void dev_mode(void)
                     }
                 }
 
-                // Replay canonical solution
+                /* Replay canonical solution */
                 if (ok && def->solution_count > 0)
                 {
                     Sequence *replay = sequence_copy(ch->initial_tape);
@@ -120,7 +120,7 @@ static void dev_mode(void)
                     sequence_destroy(replay);
                 }
 
-                // Check inventory matches solution
+                /* Check inventory matches solution */
                 if (ok)
                 {
                     int sol_del = 0, sol_ins = 0, sol_rev = 0, sol_swp = 0;
@@ -146,7 +146,7 @@ static void dev_mode(void)
                     }
                 }
 
-                // Check reproducibility
+                /* Check reproducibility */
                 if (ok)
                 {
                     Challenge *ch2 = challenge_generate(0, i);
@@ -183,7 +183,7 @@ static void dev_mode(void)
 
 int main(int argc, char *argv[])
 {
-    // Check for developer mode
+    /* Check for developer mode */
     if (argc > 1 && (strcmp(argv[1], "--dev") == 0 || strcmp(argv[1], "--developer") == 0))
     {
         dev_mode();
