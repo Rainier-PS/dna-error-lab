@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include "sequence.h"
 
-// Sequnce creation and destruction
+/* Sequnce creation and destruction */
 
 Sequence *sequence_create(size_t capacity)
 {
@@ -29,7 +29,7 @@ void sequence_destroy(Sequence *seq)
     free(seq);
 }
 
-// Sequence creation from data
+/* Sequence creation from data */
 
 Sequence *sequence_from_string(const char *str)
 {
@@ -62,7 +62,7 @@ Sequence *sequence_copy(const Sequence *src)
     return copy;
 }
 
-// Validation and comparison
+/* Validation and comparison */
 
 int sequence_validate(const Sequence *seq)
 {
@@ -82,7 +82,7 @@ int sequence_equal(const Sequence *a, const Sequence *b)
     return memcmp(a->data, b->data, a->length) == 0;
 }
 
-// Sequence mutation (insert and delete)
+/* Sequence mutation (insert and delete) */
 
 int sequence_insert(Sequence *seq, size_t pos, char base)
 {
@@ -91,7 +91,7 @@ int sequence_insert(Sequence *seq, size_t pos, char base)
     char uc = (char)toupper((unsigned char)base);
     if (uc != 'A' && uc != 'C' && uc != 'G' && uc != 'T') return 0;
 
-    // Shift downstream elements right
+    /* Shift downstream elements right */
     memmove(&seq->data[pos + 1], &seq->data[pos], seq->length - pos);
 
     seq->data[pos] = uc;
@@ -104,7 +104,7 @@ int sequence_delete(Sequence *seq, size_t pos)
 {
     if (seq == NULL || pos >= seq->length) return 0;
 
-    // Shift downstream elements left
+    /* Shift downstream elements left */
     memmove(&seq->data[pos], &seq->data[pos + 1], seq->length - pos - 1);
 
     seq->length--;
@@ -112,7 +112,7 @@ int sequence_delete(Sequence *seq, size_t pos)
     return 1;
 }
 
-// String conversion
+/* String conversion */
 void sequence_to_string(const Sequence *seq, char *buf, size_t bufsize)
 {
     if (buf == NULL || bufsize == 0) return;
@@ -128,7 +128,7 @@ void sequence_to_string(const Sequence *seq, char *buf, size_t bufsize)
     buf[copy_len] = '\0';
 }
 
-// Segment Operations for Codon Circuit instructions
+/* Segment Operations for Codon Circuit instructions */
 
 int sequence_reverse_segment(Sequence *seq, size_t pos, size_t length)
 {
