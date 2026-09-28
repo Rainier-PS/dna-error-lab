@@ -1,14 +1,3 @@
-/*
- * DNA Error Lab - Terminal UI
- *
- * All termbox2 rendering: boxes, text, colors, menus, and the
- * event loop. This file handles how the game looks.
- *
- * Screen flow:
- *   Splash -> Main Menu -> Levels / Simulation / Tutorial / Help
- *   Levels -> Playing -> Result -> Game Over
- */
-
 #define _DEFAULT_SOURCE
 #define _BSD_SOURCE
 #define _GNU_SOURCE

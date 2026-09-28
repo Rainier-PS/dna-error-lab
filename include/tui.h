@@ -3,10 +3,8 @@
 
 #include "game.h"
 
-/* Initialize the terminal and termbox2 library */
 void tui_init(void);
 
-/* Shut down termbox2 and restore the terminal */
 void tui_shutdown(void);
 
 /* Draw the current screen based on game state */
