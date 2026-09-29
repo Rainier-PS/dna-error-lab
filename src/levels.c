@@ -142,7 +142,7 @@ static const LevelDefinition LEVELS[] = {
         CORRUPTION_INS_DEL,
         "More than one operation type seems available.",
         "Check the tape length: is it a multiple of 3?",
-        "If too long â†’ DELETE. If too short â†’ INSERT.",
+        "If too long -> DELETE. If too short -> INSERT.",
         "Verify all codons match after your edit.",
         "TACACACAGACT",
         "TGAACACAGACT",
