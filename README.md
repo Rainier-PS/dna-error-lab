@@ -1,6 +1,6 @@
 # DNA Error Lab
 
-#### Video Demo:
+#### Video Demo: [Demo Video](https://youtu.be/6ccsMtKlwLY)
 
 ## Description
 
