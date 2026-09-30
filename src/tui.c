@@ -1,3 +1,11 @@
+/*
+AI USAGE DISCLOSURE
+
+I used AI tools during the development of this TUI implementation to understand how termbox2 works, learn how to use its API, and help with coding and debugging terminal UI behaviour.
+
+AI assistance is also used to help me consider whether a terminal UI library such as termbox2 was suitable for this project. I made the final decision to use termbox2 and designed the screens, layout, controls, and user flow myself.
+*/
+
 #define _DEFAULT_SOURCE
 #define _BSD_SOURCE
 #define _GNU_SOURCE

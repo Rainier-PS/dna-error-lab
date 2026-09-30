@@ -1,3 +1,11 @@
+/*
+AI USAGE DISCLOSURE
+
+I used AI tools during development when I was stuck on bugs or unsure why parts of the implementation are not working.
+I used AI to help diagnose the problems, explain the relevant C behaviour, and suggest the possible fixes.
+Then I incorporated and tested changes and continued developing the project.
+*/
+
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>

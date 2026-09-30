@@ -1,3 +1,10 @@
+/*
+AI USAGE DISCLOSURE
+
+The level designs, objectives, solutions, and progression weere created by me.
+I used AI assistance to check that the levels were mathematically solvable and not unintentionally impossible to solve.
+*/
+
 #include <stdio.h>
 #include "levels.h"
 

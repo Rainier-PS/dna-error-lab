@@ -1,3 +1,15 @@
+/*
+AI USAGE DISCLOSURE
+
+I used AI tools throughout the development of this challenge generation system.
+I created the overall concept, requirements, and intended behaviour, but I initially struggled to translate the design into the implementation.
+
+I used AI to help me understand and decompose the problem, reason about the algorithms and data flow, and create pseudocode and implementation scaffolding that I could work from.
+I also consulted AI during development to explain C behaviour, work through logic problems, and debug issues or errors.
+
+Then I adapted, reviewed, modified, and tested the implementation myself. The level designs, objectives, progression, generation requirements, and intended difficulty were created by me.
+*/
+
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>

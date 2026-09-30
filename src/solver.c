@@ -1,3 +1,13 @@
+/*
+AI USAGE DISCLOSURE
+
+I used AI tools in the development of this BFS solver to help debug and adapt the implementation to this project's sequence-mutation state space.
+I already understood BFS and the general idea of representing each sequence and remaining mutation inventory as a search state, but my initial implementation had problems when I applied the algorithm to this project.
+
+I used AI assistance to investigate those implementation problems, reason about state representation, visited-state tracking, transition generation, and the solver's stopping behaviour.
+Then I implemented, modified, and tested the resulting code myself.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

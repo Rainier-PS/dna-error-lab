@@ -1,3 +1,11 @@
+/*
+AI USAGE DISCLOSURE
+
+I used AI tools during the implementation and debugging of this scoring system.
+The scoring rules, point values, difficulty scaling, hint bonuses, speed bonuses, and penalties were designed by me.
+I used AI assistance mainly to troubleshoot the C implementation and resolve bugs.
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include "scoring.h"

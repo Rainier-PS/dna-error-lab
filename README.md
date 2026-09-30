@@ -79,3 +79,9 @@ The `tests/` folder contains standalone test programs: `test_canonical.c` verifi
 **Limited inventory.** The counters force planning. Without them, most levels would have many trivial solutions.
 
 **Module seperation.** Sequence handling, mutations, translation, evaluation, challenge building, scoring, and the UI are separate modules with headers as contracts. The game logic never depends on the terminal library, which is why the tests can run the whole game without opening a terminal.
+
+## AI USAGE DISCLOSURE
+
+I used AI tools like ChatGPT during the development of this project as a learning and development tool. I used it to explain C concepts and terminal tools, including Git and GitHub, and to help me understand technical problems when I was stuck. I also used it for project-level discussion, problem decomposition, debugging, pseudocode making, implementation scaffolding, and technical review.
+
+The project's concept, game rules, level designs, objectives, and overall direction were created by me. I reviewed, modified, and tested the implementation throughout the development. Specific source files contain additional AI usage disclosures where AI involvement was relevant.

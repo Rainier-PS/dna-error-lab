@@ -1,3 +1,12 @@
+/*
+AI USAGE DISCLOSURE
+
+I used AI tools during the implementation and debugging of this mutation system when I was stuck on bugs or unsure why parts of the code were not working.
+I used AI assistance to help diagnose problems, explain the problems, and suggest possible implementation fixes.
+
+The mutation rules, operation behaviour, validation rules, and inventory system were designed by me.
+*/
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
